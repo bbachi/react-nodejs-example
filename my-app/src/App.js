@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import { Header } from './components/Header'
@@ -7,32 +7,41 @@ import { DisplayBoard } from './components/DisplayBoard'
 import CreateUser from './components/CreateUser'
 import { getAllUsers, createUser } from './services/UserService'
 
-class App extends Component {
+function App() {
 
-  state = {
-    user: {},
-    users: [],
-    numberOfUsers: 0
-  }
+  const [user, setUser] = useState({})
+  const [users, setUsers] = useState([])
+  const [numberOfUsers, setNumberOfUsers] = useState(0)
 
-  createUser = (e) => {
-      createUser(this.state.user)
+
+  const userCreate = (e) => {
+
+      createUser(user)
         .then(response => {
           console.log(response);
-          this.setState({numberOfUsers: this.state.numberOfUsers + 1})
+          setNumberOfUsers(numberOfUsers+1)
       });
   }
 
-  getAllUsers = () => {
+  const fetchAllUsers = () => {
     getAllUsers()
       .then(users => {
         console.log(users)
-        this.setState({users: users, numberOfUsers: users.length})
+        setUsers(users);
+        setNumberOfUsers(users.length)
       });
   }
 
-  onChangeForm = (e) => {
-      let user = this.state.user
+  useEffect(() => {
+    getAllUsers()
+      .then(users => {
+        console.log(users)
+        setUsers(users);
+        setNumberOfUsers(users.length)
+      });
+  }, [])
+
+  const onChangeForm = (e) => {
       if (e.target.name === 'firstname') {
           user.firstName = e.target.value;
       } else if (e.target.name === 'lastname') {
@@ -40,39 +49,40 @@ class App extends Component {
       } else if (e.target.name === 'email') {
           user.email = e.target.value;
       }
-      this.setState({user})
+      setUser(user)
   }
 
-  render() {
+  if (users.length === 0) {
+    throw Error("Error!!!");
+  }
     
     return (
-      <div className="App">
-        <Header></Header>
-        <div className="container mrgnbtm">
-          <div className="row">
-            <div className="col-md-8">
-                <CreateUser 
-                  user={this.state.user}
-                  onChangeForm={this.onChangeForm}
-                  createUser={this.createUser}
+        <div className="App">
+          <Header></Header>
+          <div className="container mrgnbtm">
+            <div className="row">
+              <div className="col-md-8">
+                  <CreateUser 
+                    user={user}
+                    onChangeForm={onChangeForm}
+                    createUser={userCreate}
+                    >
+                  </CreateUser>
+              </div>
+              <div className="col-md-4">
+                  <DisplayBoard
+                    numberOfUsers={numberOfUsers}
+                    getAllUsers={fetchAllUsers}
                   >
-                </CreateUser>
-            </div>
-            <div className="col-md-4">
-                <DisplayBoard
-                  numberOfUsers={this.state.numberOfUsers}
-                  getAllUsers={this.getAllUsers}
-                >
-                </DisplayBoard>
+                  </DisplayBoard>
+              </div>
             </div>
           </div>
+          <div className="row mrgnbtm">
+            <Users users={users}></Users>
+          </div>
         </div>
-        <div className="row mrgnbtm">
-          <Users users={this.state.users}></Users>
-        </div>
-      </div>
     );
-  }
 }
 
 export default App;

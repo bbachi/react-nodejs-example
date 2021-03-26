@@ -3,10 +3,13 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import { AppError } from './components/AppError';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <AppError>
+      <App />
+    </AppError>
   </React.StrictMode>,
   document.getElementById('root')
 );

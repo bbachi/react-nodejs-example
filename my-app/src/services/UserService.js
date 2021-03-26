@@ -1,8 +1,13 @@
 
 export async function getAllUsers() {
 
-    const response = await fetch('/api/users');
-    return await response.json();
+    try{
+        const response = await fetch('/api/users');
+        return await response.json();
+    }catch(error) {
+        return [];
+    }
+    
 }
 
 export async function createUser(data) {

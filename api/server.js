@@ -5,7 +5,23 @@ const app = express(),
       port = 3080;
 
 // place holder for the data
-const users = [];
+const users = [
+  {
+    firstName: "first1",
+    lastName: "last1",
+    email: "abc@gmail.com"
+  },
+  {
+    firstName: "first2",
+    lastName: "last2",
+    email: "abc@gmail.com"
+  },
+  {
+    firstName: "first3",
+    lastName: "last3",
+    email: "abc@gmail.com"
+  }
+];
 
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '../my-app/build')));
