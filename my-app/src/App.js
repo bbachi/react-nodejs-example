@@ -51,10 +51,7 @@ function App() {
       }
       setUser(user)
   }
-
-  if (users.length === 0) {
-    throw Error("Error!!!");
-  }
+  
     
     return (
         <div className="App">
