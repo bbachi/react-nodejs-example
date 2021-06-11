@@ -2,7 +2,7 @@ const express = require('express');
 const path = require('path');
 const app = express(),
       bodyParser = require("body-parser");
-      port = 80;
+      port = 3001;
 
 // place holder for the data
 const users = [
@@ -35,7 +35,7 @@ app.post('/api/user', (req, res) => {
   const user = req.body.user;
   console.log('Adding user:::::', user);
   users.push(user);
-  res.json("user addedd");
+  res.json("user added");
 });
 
 app.get('/', (req,res) => {
