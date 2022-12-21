@@ -5,16 +5,14 @@ services:
     depends_on:
       - api
     ports:
-      - "3000:3000"
+      - "3003:3000"
     stdin_open: true
     networks:
        - network-backend
   api:
     build: ./api
-    # depends_on:
-    #   - mongo
     ports:
-      - "4000:4000"
+      - "4004:4000"
     networks: 
       - network-backend
 
