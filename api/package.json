@@ -28,8 +28,8 @@
     "gulp": "^4.0.2",
     "gulp-zip": "^5.0.1",
     "nodemon": "^2.0.4",
-    "webpack": "^4.43.0",
-    "webpack-cli": "^3.3.11",
-    "webpack-stream": "^5.2.1"
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-stream": "^7.0.0"
   }
 }
