@@ -1,44 +1,77 @@
-# react-nodejs-example
-## Docker
-#### Create Dockerfile and write commands using the reference given above
->step1: Creating Docker image in frontend using :
->`docker build -t <imagename> . 
+# Table of Contents
+- [Docker Compose ](#docker-compose-v2)
+- [Where to get Docker Compose](#where-to-get-docker-compose)
+    + [Windows and macOS](#windows-and-macos)
+    + [Linux](#linux)
+- [Quick Start](#quick-start)
+- [Contributing](#contributing)
+# Docker Compose 
 
->step2: Creating Docker image in backend using :
->`cd backend/`
->`docker build -t <imagename> . `
+[![GitHub release](https://img.shields.io/github/release/docker/compose.svg?style=flat-square)](https://github.com/docker/compose/releases/latest)
+[![PkgGoDev](https://img.shields.io/badge/go.dev-docs-007d9c?style=flat-square&logo=go&logoColor=white)](https://pkg.go.dev/github.com/docker/compose/v2)
+[![Build Status](https://img.shields.io/github/workflow/status/docker/compose/ci?label=ci&logo=github&style=flat-square)](https://github.com/docker/compose/actions?query=workflow%3Aci)
+[![Go Report Card](https://goreportcard.com/badge/github.com/docker/compose/v2?style=flat-square)](https://goreportcard.com/report/github.com/docker/compose/v2)
+[![Codecov](https://codecov.io/gh/docker/compose/branch/master/graph/badge.svg?token=HP3K4Y4ctu)](https://codecov.io/gh/docker/compose)
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/docker/compose/badge)](https://api.securityscorecards.dev/projects/github.com/docker/compose)
+![Docker Compose](logo.png?raw=true "Docker Compose Logo")
 
->step3: Creating container using Docker image by this command :
-`docker run -itd --name <container_name> -p <portno> <imagename>`
+Docker Compose is a tool for running multi-container applications on Docker
+defined using the [Compose file format](https://compose-spec.io).
+A Compose file is used to define how one or more containers that make up
+your application are configured.
+Once you have a Compose file, you can create and start your application with a
+single command: `docker compose up`.
 
->step4: Checking the containers created using :
->To see running containers : 
->` docker ps ` 
->To see running and non-running containers :
->` docker ps -a ` 
 
->step5: In browser exposing the container by :
->`localhost:portno`
+# Where to get Docker Compose
 
-## Dockercompose
-#### Nameformat for docker compose file creation: `docker-compose.yml`
-**To run:** `docker compose up -d`
-**To stop:** `docker compose down -d`
-**For expose:** In browser `ipaddr:portno`
+### Windows and macOS
 
-## Dockerswarm 
-#### Nameformat for docker stack file creation: `docker.stack.yml`
->step1: Initializing dockerswarm in manager node by :
->`docker swarm init --advertise-addr <IPaddr of manager node>`
+Docker Compose is included in
+[Docker Desktop](https://www.docker.com/products/docker-desktop)
+for Windows and macOS.
 
->step2: Assigning workernode for managernode using token :  
->`docker swarm join --token (token will be provided after executing step1)`
+### Linux
 
->step3: Creating the dockerstackfile by :
->`vi docker.stack.yml` 
+You can download Docker Compose binaries from the
+[release page](https://github.com/docker/compose/releases) on this repository.
 
->step4: Deploying the docker stack using :
->`docker stack deploy -c docker.stack.yml <name>`
+Rename the relevant binary for your OS to `docker-compose` and copy it to `$HOME/.docker/cli-plugins`
 
->step5: Exposing the container in browser by :
->`ipaddr:portno`
+Or copy it into one of these folders to install it system-wide:
+
+* `/usr/local/lib/docker/cli-plugins` OR `/usr/local/libexec/docker/cli-plugins`
+* `/usr/lib/docker/cli-plugins` OR `/usr/libexec/docker/cli-plugins`
+
+(might require making the downloaded file executable with `chmod +x`)
+
+
+Quick Start
+-----------
+
+Using Docker Compose is a three-step process:
+1. Define your app's environment with a `Dockerfile` so it can be
+   reproduced anywhere.
+2. Define the services that make up your app in `docker-compose.yml` so
+   they can be run together in an isolated environment.
+3. Lastly, run `docker compose up` and Compose will start and run your entire
+   app.
+
+A Compose file looks like this:
+
+```yaml
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/code
+  redis:
+    image: redis
+```
+
+Contributing
+------------
+
+Dont hesitate to create a pull request
