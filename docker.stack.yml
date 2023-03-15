@@ -1,0 +1,28 @@
+version : "3.8"
+services:
+  my-app:
+    image: <imagename>
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      # To place in particular node
+      # placement:
+      #   constraints: [node.hostname == <hostname>]
+    ports:
+      - "3000:3000" 
+  api:
+    image: <imagename>
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+      # To place in particular node
+      # placement:
+      #   constraints: [node.hostname == <hostname>]
+    ports:
+      - "4000:4000"   
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock"

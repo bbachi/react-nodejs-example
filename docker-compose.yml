@@ -1,0 +1,20 @@
+version: "3.8"
+services:
+  web:
+    build: ./my-app
+    depends_on:
+      - api
+    ports:
+      - "3003:3000"
+    stdin_open: true
+    networks:
+       - network-backend
+  api:
+    build: ./api
+    ports:
+      - "4004:4000"
+    networks: 
+      - network-backend
+
+networks:
+  network-backend:
