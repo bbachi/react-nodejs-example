@@ -1,5 +1,7 @@
 # react-nodejs-example
 
+This is an application which contains a connected nodejs backend to a react frontend
+
 ## Available Scripts
 
 In the project directory, you can run:
