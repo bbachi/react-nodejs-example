@@ -1,18 +1,54 @@
-# Table of Contents
-- [Docker Compose ](#docker-compose-v2)
-- [Where to get Docker Compose](#where-to-get-docker-compose)
-    + [Windows and macOS](#windows-and-macos)
-    + [Linux](#linux)
-- [Quick Start](#quick-start)
-- [Contributing](#contributing)
+# react-nodejs-example
+
+## Available Scripts
+
+In the project directory, you can run:
+
+### `npm start`
+
+Runs the app in the development mode.\
+Open [http://localhost:8080](http://localhost:8080) to view it in your browser.
+
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
+
+### `npm test`
+
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run build`
+
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
+
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+### `npm run eject`
+
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+
+# Docker
+
+![Docker](https://jeddict.github.io/tutorial/Docker/DOCKER.png)
+
+Docker is an open platform for developing, shipping, and running applications. Docker enables you to separate your applications from your infrastructure so you can deliver software quickly.
+
+# Dockerfile
+
+A Dockerfile is a text document that contains all the commands a user could call on the command line to assemble an image
+
 # Docker Compose 
 
-[![GitHub release](https://img.shields.io/github/release/docker/compose.svg?style=flat-square)](https://github.com/docker/compose/releases/latest)
-[![PkgGoDev](https://img.shields.io/badge/go.dev-docs-007d9c?style=flat-square&logo=go&logoColor=white)](https://pkg.go.dev/github.com/docker/compose/v2)
-[![Build Status](https://img.shields.io/github/workflow/status/docker/compose/ci?label=ci&logo=github&style=flat-square)](https://github.com/docker/compose/actions?query=workflow%3Aci)
-[![Go Report Card](https://goreportcard.com/badge/github.com/docker/compose/v2?style=flat-square)](https://goreportcard.com/report/github.com/docker/compose/v2)
-[![Codecov](https://codecov.io/gh/docker/compose/branch/master/graph/badge.svg?token=HP3K4Y4ctu)](https://codecov.io/gh/docker/compose)
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/docker/compose/badge)](https://api.securityscorecards.dev/projects/github.com/docker/compose)
 ![Docker Compose](https://jeddict.github.io/tutorial/Docker/COMPOSE.png "Docker Compose Logo")
 
 
@@ -23,28 +59,6 @@ your application are configured.
 Once you have a Compose file, you can create and start your application with a
 single command: `docker compose up`.
 
-
-# Where to get Docker Compose
-
-### Windows and macOS
-
-Docker Compose is included in
-[Docker Desktop](https://www.docker.com/products/docker-desktop)
-for Windows and macOS.
-
-### Linux
-
-You can download Docker Compose binaries from the
-[release page](https://github.com/docker/compose/releases) on this repository.
-
-Rename the relevant binary for your OS to `docker-compose` and copy it to `$HOME/.docker/cli-plugins`
-
-Or copy it into one of these folders to install it system-wide:
-
-* `/usr/local/lib/docker/cli-plugins` OR `/usr/local/libexec/docker/cli-plugins`
-* `/usr/lib/docker/cli-plugins` OR `/usr/libexec/docker/cli-plugins`
-
-(might require making the downloaded file executable with `chmod +x`)
 
 
 Quick Start
@@ -69,7 +83,7 @@ services:
     volumes:
       - .:/code
   redis:
-    image: redis
+    image: nginx
 ```
 
 Contributing
